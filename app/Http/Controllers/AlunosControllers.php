@@ -4,16 +4,28 @@ namespace App\Http\Controllers;
 
 use App\Models\Aluno;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
 
 class AlunosControllers extends Controller
 {
     public function index(Request $request)
     {
-        //Recupera todos os dados da tabela alunos e armazena no array $alunos
-        $alunos = Aluno::all();
 
-        //'alunos.index' = caminho da view
-        //'alunos' => $alunos = envia os dados atraves de um array (método de array associativo, lembrando que temos tambem o with e o compact)
+        $user = Auth::user();
+        $userTeam = $user->team;
+
+        // Consulta parametrizada para evitar SQL injection
+        if ($user->nivel == 'admin') {
+            $alunos = Aluno::all();
+        } else {
+            $alunos = DB::table('alunos')
+                ->where('turma', $userTeam)
+                ->get();
+        }
+
+
         return view('alunos.index', ['alunos' => $alunos]);
     }
 

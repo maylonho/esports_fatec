@@ -11,5 +11,5 @@ class Equipes extends Model
     protected $table = 'equipes';
 
     //atributos que serão enviados
-    protected $fillable = ['id', 'nome', 'game', 'pontos'];
+    protected $fillable = ['id', 'nome', 'game', 'pontos', 'nick', 'image'];
 }
