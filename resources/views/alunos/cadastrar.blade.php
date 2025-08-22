@@ -68,7 +68,7 @@
                 <input name="turma" type="hidden" value="{{ auth()->user()->team }}">
 
                 <div class="d-flex justify-content-end mt-4">
-                    <button type="submit" class="btn btn-success">Cadastrar</button>
+                    <button type="submit" class="btn btn-danger">Cadastrar</button>
                 </div>
 
             </form>

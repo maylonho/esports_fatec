@@ -34,9 +34,7 @@ Route::get('/home', [EquipeController::class, 'index'])->name('home');
 // Rota para listar o ranking
 Route::get('/placar_cs', [EquipeController::class, 'index'])->name('game_cs.listar');
 // Rota para listar a programação dos jogos
-Route::get('/agenda_cs', function () {
-    return view('game_cs.agenda');
-})->name('game_cs.agenda');
+Route::get('/agenda_cs', [EquipeController::class, 'all'])->name('game_cs.agenda');
 
 Route::get('/alunos', [AlunosControllers::class, 'index'])
     ->middleware(['auth'])

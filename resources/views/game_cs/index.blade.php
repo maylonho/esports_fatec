@@ -34,8 +34,13 @@
                                         {{ $index + 1 }}º
                                     </td>
                                     <td class="fw-semibold">
+                                        @if($equi->image)
                                         <img src="{{ asset('storage/' . $equi->image) }}" alt="Imagem do time" width="30px" class="me-3">
-                                          {{ $equi->nick }} - {{ strtoupper($equi->nome) }}
+                                        @else
+                                        <img src="{{ asset('storage/teams/default-team.png') }}" alt="Imagem padrão" width="30px" class="me-3">
+                                        @endif
+                                        
+                                        {{ $equi->nick }} - {{ strtoupper($equi->nome) }}
                                     </td>
                                     <td class="text-center fw-bold text-dark">
                                         {{ $equi->pontos }}
@@ -52,17 +57,17 @@
         <!-- Jogos -->
         <div class="col-lg-4 mb-4">
             <div class="card shadow-lg border-0 rounded-4">
-                <div class="card-header bg-primary text-white text-center rounded-top-4">
+                <div class="card-header bg-secoundary text-dark text-center rounded-top-4">
                     <h3 class="mb-0">Partidas</h3>
                 </div>
                 <div class="card-body p-4">
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            DSM1 
+                            DSM1
                             <span class="badge bg-success rounded-2">Vitória</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            DSM2 
+                            DSM2
                             <span class="badge bg-danger rounded-2">Derrota</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">

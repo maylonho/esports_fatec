@@ -8,21 +8,43 @@
 
     <div class="bracket">
 
+        <!-- Rodada 1 -->
         <div class="round round-1">
             <div class="match">
-                <div class="team">DSM1</div>
-                <div class="team">DSM6</div>
+                <div class="team">
+                    <img src="{{ asset('storage/' . $equipes[0]->image) }}" alt="{{ $equipes[0]->nome }}" style="width:30px;height:30px;margin-right:5px;">
+                    {{ strtoupper($equipes[0]->nome) }}
+                </div>
+                <div class="team">
+                    <img src="{{ asset('storage/' . $equipes[5]->image) }}" alt="{{ $equipes[0]->nome }}" style="width:30px;height:30px;margin-right:5px;">
+                    {{ strtoupper($equipes[5]->nome) }}
+                </div>
             </div>
             <div class="match">
-                <div class="team">DSM2</div>
-                <div class="team">DSM5</div>
+                <div class="team">
+                    <div class="team">
+                    <img src="{{ asset('storage/' . $equipes[1]->image) }}" alt="{{ $equipes[0]->nome }}" style="width:30px;height:30px;margin-right:5px;">
+                    {{ strtoupper($equipes[1]->nome) }}
+                </div>
+                </div>
+                <div class="team">
+                    <div class="team">
+                    <img src="{{ asset('storage/' . $equipes[4]->image) }}" alt="{{ $equipes[0]->nome }}" style="width:30px;height:30px;margin-right:5px;">
+                    {{ strtoupper($equipes[4]->nome) }}
+                </div>
+                </div>
             </div>
             <div class="match">
-                <div class="team">DSM3</div>
-                <div class="team">DSM4</div>
+                <div class="team">
+                    <img src="{{ asset('storage/' . $equipes[2]->image) }}" alt="{{ $equipes[0]->nome }}" style="width:30px;height:30px;margin-right:5px;">
+                    {{ strtoupper($equipes[2]->nome) }}
+                </div>
+                <div class="team"><img src="{{ asset('storage/' . $equipes[3]->image) }}" alt="{{ $equipes[0]->nome }}" style="width:30px;height:30px;margin-right:5px;">
+                    {{ strtoupper($equipes[3]->nome) }}</div>
             </div>
         </div>
 
+        <!-- Rodada 2 -->
         <div class="round round-2">
             <div class="match">
                 <div class="team">Vencedor 1</div>
@@ -34,138 +56,106 @@
             </div>
         </div>
 
+        <!-- Rodada Final -->
         <div class="round round-3">
             <div class="match">
-                <div class="team">Final</div>
-                <div class="team">Final</div>
+                <div class="team final">Final</div>
             </div>
         </div>
+
     </div>
 </div>
 
 <style>
-    /* Estilos Gerais do Chaveamento */
+    /* Container da chave */
     .bracket {
         display: flex;
         justify-content: center;
+        gap: 80px;
         align-items: flex-start;
-        gap: 60px;
-        /* Espaço entre as colunas (rodadas) */
         flex-wrap: wrap;
     }
 
+    /* Rodadas */
     .round {
         display: flex;
         flex-direction: column;
         justify-content: center;
         gap: 40px;
-        /* Espaço entre as partidas na mesma coluna */
         position: relative;
     }
 
+    /* Partidas */
     .match {
         background: #f8f9fa;
-        border: 1px solid #ddd;
+        border: 1px solid #ccc;
         border-radius: 5px;
         padding: 10px 15px;
-        display: flex;
-        flex-direction: column;
-        text-align: center;
         min-width: 150px;
+        text-align: center;
         position: relative;
-        /* Necessário para posicionar as linhas de conexão */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     }
 
-    .match .team {
-        padding: 5px 0;
+    /* Times dentro da partida */
+    .team {
         font-weight: 600;
+        padding: 5px 0;
         border-bottom: 1px solid #eee;
     }
 
-    .match .team:last-child {
+    .team:last-child {
         border-bottom: none;
     }
 
-    /* Estilo para a rodada final (opcional) */
+    /* Destaque Final */
     .round-3 .match {
         background: #ffd700;
-        border: 1px solid #ffc107;
+        border: 2px solid #ffc107;
     }
 
-    /* Linhas de Conexão entre as Rodadas */
-
-    /* Conexões horizontais saindo de cada partida */
+    /* Linhas horizontais conectando partidas */
     .match::after {
         content: '';
         position: absolute;
-        right: -30px;
-        /* Metade da distância entre as colunas */
+        right: -40px;
         top: 50%;
-        width: 30px;
-        height: 1px;
-        background-color: #555;
+        width: 40px;
+        height: 2px;
+        background: #555;
         transform: translateY(-50%);
-        z-index: 1;
     }
 
-    /* Linhas verticais conectando os grupos de partidas (ex: 1ª para a 2ª rodada) */
+    /* Linhas verticais conectando as partidas pares e ímpares */
     .round .match:nth-child(odd)::before {
         content: '';
         position: absolute;
-        right: -30px;
-        /* Metade da distância entre as colunas */
+        right: -40px;
         top: 50%;
-        width: 1px;
-        height: calc(50% + 20px);
-        /* 50% da altura da partida + metade do gap */
-        border-right: 1px dashed #555;
-        border-bottom: 1px dashed #555;
-        transform: translateY(-50%);
+        width: 2px;
+        height: calc(100% + 20px);
+        background: #555;
     }
 
-    /* Ajuste para as partidas pares para não duplicar as linhas */
     .round .match:nth-child(even)::before {
         content: '';
         position: absolute;
-        right: -30px;
-        /* Metade da distância entre as colunas */
-        top: 50%;
-        width: 1px;
-        height: calc(50% + 20px);
-        /* 50% da altura da partida + metade do gap */
-        border-right: 1px dashed #555;
-        border-top: 1px dashed #555;
-        transform: translateY(-50%);
+        right: -40px;
+        top: -20px;
+        width: 2px;
+        height: calc(100% + 20px);
+        background: #555;
     }
 
-    /* Correção para as linhas da última partida de cada grupo, que não precisam de conexão vertical para baixo */
-    .round-1 .match:nth-last-child(-n+1)::before,
-    .round-2 .match:nth-last-child(-n+1)::before {
-        height: calc(50% + 20px);
-        border-top: 1px dashed #555;
-        border-bottom: none;
-    }
-
-    /* Ajuste para a conexão entre as rodadas Semifinal e Final */
-    .round-2 .match::after {
-        right: -30px;
-    }
-
-    /* Linhas da Final */
-    .round-3 .match::after {
+    /* Remove linha horizontal da última rodada */
+    .round-3 .match::after,
+    .round-3 .match::before {
         content: none;
     }
 
-    /* Correção para as linhas da primeira rodada */
-    .round-1 .match:nth-child(odd)::before {
-        border-right: 1px dashed #555;
-        border-bottom: 1px dashed #555;
-    }
-
-    .round-1 .match:nth-child(even)::before {
-        border-right: 1px dashed #555;
-        border-top: 1px dashed #555;
+    /* Centraliza a Final */
+    .round-3 {
+        margin-top: 80px;
     }
 </style>
 @endsection

@@ -11,10 +11,10 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-4 text-center">
-                    @if($team->image == '')
+                    @if($team->image)
                         <img src="{{ asset('storage/' . $team->image) }}" alt="Imagem do time" class="img-fluid img-thumbnail mb-3">
                     @else
-                        <img src="{{ asset('default-team.png') }}" alt="Imagem padrão" class="img-fluid img-thumbnail mb-3">
+                        <img src="{{ asset('images/no-image.png') }}" alt="No Image" class="img-fluid img-thumbnail mb-3" width="50%">
                     @endif
                 </div>
                 <div class="col-md-8">

@@ -17,6 +17,15 @@ class EquipeController extends Controller
         return view('game_cs.index', ['equipes' => $equipes]);
     }
 
+    
+    public function all(Request $request)
+    {
+        //Recupera todos os dados da tabela equipes e armazena no array $equipes
+        $equipes = Equipes::all();
+
+        return view('game_cs.agenda', ['equipes' => $equipes]);
+    }
+
     public function team()
     {
         // pega o nome do time do usuário logado
