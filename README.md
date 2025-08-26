@@ -1,4 +1,14 @@
-composer require laravel/breeze --dev
-php artisan breeze:install
-npm install && npm run dev
-php artisan migrate
+composer install
+
+
+php artisan migrate --seed
+
+
+php artisan key:generate
+
+
+npm install
+
+npm run build
+
+php artisan storage:link
