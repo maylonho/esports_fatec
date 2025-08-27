@@ -6,7 +6,7 @@
 <div class="container my-5">
 
     <div class="text-center mb-5">
-        <h1 class="fw-bold text-dark">🏆 Classificação dos Jogos CS 1.6</h1>
+        <h1 class="fw-bold text-dark">🏆 Classificação dos Jogos CS 1.6 da Fatec</h1>
         <p class="text-muted">Acompanhe o ranking atualizado das equipes</p>
     </div>
 
